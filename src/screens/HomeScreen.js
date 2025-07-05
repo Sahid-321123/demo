@@ -3,12 +3,14 @@ import { View, Text, FlatList, StyleSheet, ScrollView } from 'react-native';
 import HeaderSearch from '../components/HeaderSearch';
 import CityCircle from '../components/CityCircle';
 import CategoryCard from '../components/CategoryCard';
-import { cities, categories } from '../constants/data';
+import { cities, categories, categories1, categories2 } from '../constants/data';
 
 const HomeScreen = () => {
   return (
     <ScrollView style={styles.container}>
-      <HeaderSearch />
+       
+        <HeaderSearch />
+     
 
       <Text style={styles.sectionTitle}>Everywhere, you have a home</Text>
       <FlatList
@@ -32,6 +34,24 @@ const HomeScreen = () => {
 
       <Text style={styles.sectionTitle}>Top Picks For You 🏡</Text>
       {/* You can include cards here similarly */}
+      <FlatList
+        horizontal
+        data={categories1}
+        keyExtractor={(item) => item.name}
+        renderItem={({ item }) => <CategoryCard category={item} />}
+        contentContainerStyle={styles.horizontalList}
+        showsHorizontalScrollIndicator={false}
+      />
+        <Text style={styles.sectionTitle}>Top Picks For You 🏡</Text>
+      {/* You can include cards here similarly */}
+      <FlatList
+        horizontal
+        data={categories2}
+        keyExtractor={(item) => item.name}
+        renderItem={({ item }) => <CategoryCard category={item} />}
+        contentContainerStyle={styles.horizontalList}
+        showsHorizontalScrollIndicator={false}
+      />
     </ScrollView>
   );
 };
